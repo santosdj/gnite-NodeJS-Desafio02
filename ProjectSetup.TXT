@@ -1,0 +1,64 @@
+#Estrutura da Aplicação
+01 - npm init -Y -> Cria o projeto node
+02 - npm i -D typescript -> Adiciona o typescript
+03 - npx tsc --init -> configura o typescript e cria o arquivo tsconfig.json
+04 - tsconfig.json -> Ajustar o arquivo  
+    target:"es2020"
+05 - Convertendo um arquivo typescript para javascript
+    npx tsc src/index.ts
+06 - npm i fastify -> Instala o fastify microframework Node.JS
+07 - npm i -D @types/node - > instala o superset do typescript para o node
+08 - npm i -D tsx -> executar codigo typescript em dev.
+09 - npm i -D eslint @rocketseat/eslint-config -> instalando o eslint e a preset da rocketseat
+10 - criar o arquivo .eslintrc.json 
+    {
+        "extends":[
+         "@rocketseat/eslint-config/node"
+        ]
+    }
+11 - instalar a extensão ESLINT no VSCODE
+12 - recarregar ctrl+shift+P -> Developer Reload Window
+13 - configurar para o eslint corrigir o código ao salvar
+ctrl+shift+P -> Open user settings JSON 
+   "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+14 - adicionar no package.json a opção de correção de todo o código.
+    "lint": "eslint src --ext .ts --fix"
+opção interessante para projetos em grupo. No deploy o responsável pelo código roda o comando para garantir a padronização do código.
+15 - criar arquivo .gitignore
+
+#Configurando o Database
+1 - npm install knex sqlite3
+2 - criar arquivo knexfile.ts -> este arquivo indica as configurações para o cli do knex rodar
+3 - adicionar script no package json
+    "knex" : "node --loader ./node_modules/.bin/knex"
+    npm run knex -- -h
+4 - definir local de criação das migrations
+    no arquivo de configuração adicionar: 
+        migrations: {
+            extension: 'tsx',
+            directory: './db/migrations',
+        },
+5 - criar a migrations 
+    npm run knex -- migrate:make [nome]
+
+#Variávies de ambiente
+1 - instalar extensão VSCODE DotEnv
+2 - npm install dotenv -  instalar o dotenv
+3 - npm install zod -validação de dados
+
+#Tipagem do knex
+1 - criar arquivo @types/knex.d.ts
+2 - extender o tipo do Knex 'knex/types/tables'
+
+#Cookies
+1 -npm install @fastify/cookie
+
+#Testes
+1 - npm i vitest -D
+2 - npm i supertest -D
+3 - separar o "escopo" do app do arquivo server.ts colocando no app.ts
+
+
+
