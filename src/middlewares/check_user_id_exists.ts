@@ -7,7 +7,6 @@ export async function checkUserIdExists(
   reply: FastifyReply,
 ) {
   const user_id = request.cookies.user_id
-  console.log('prehandler rolando')
 
   if (!user_id) {
     return reply.status(401).send({

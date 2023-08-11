@@ -61,7 +61,7 @@ export async function mealsRoutes(app: FastifyInstance) {
   app.delete('/:id', async (request, reply) => {
     const { id } = getMealIdSchema.parse(request.params)
     const { user_id } = request.cookies
-    const count = await knex('meals').where(id, user_id).delete()
+    const count = await knex('meals').where({ id, user_id }).delete()
 
     if (count > 0) return reply.status(204).send()
     reply.status(404).send()
